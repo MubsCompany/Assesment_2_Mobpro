@@ -3,7 +3,6 @@ package org.d3if3011.assesment_ll_mobpro.database
 
 import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.Room.databaseBuilder
 import androidx.room.RoomDatabase
 import org.d3if3011.assesment_ll_mobpro.model.Buku

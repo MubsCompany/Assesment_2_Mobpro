@@ -67,7 +67,7 @@ fun MainScreen(navController: NavHostController) {
     Scaffold (
         topBar = {
             TopAppBar(title = {
-                Text(text = (stringResource(id = R.string.app_name)))
+                Text(text = (stringResource(id = R.string.pencatatan_tugas)))
             },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
@@ -151,7 +151,8 @@ fun ScreenContent(showList: Boolean, modifier: Modifier,navController: NavHostCo
             ) {
                 items(data) {
                     ListItem(buku = it) {
-                        navController.navigate(Screen.FormUbah.withId(it.id))
+//                        navController.navigate(Screen.FormUbah.withId(it.id))
+                        navController.navigate("detailScreen" + "/" + it.id)
                     }
                     Divider()
                 }

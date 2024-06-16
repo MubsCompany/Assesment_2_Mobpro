@@ -16,7 +16,7 @@
     <string name="simpan">Simpan</string>
     <string name="edit_buku">Ubah Buku</string>
     <string name="invalid">data tidak boleh kosong</string>
-    <string name="hapus">Hapus Buku</string>
+    <string name="hapus_buku">Hapus Buku</string>
     <string name="opsi_lainnya">Opsi Lainnya</string>
 
     <string name="pesan_hapus">Hapus buku ini?</string>
@@ -24,4 +24,26 @@
     <string name="tombol_batal">Batal</string>
     <string name="list">Tampilan list</string>
     <string name="grid">Tampilan grid</string>
+    <string name="gambar">Gambar %1$s</string>
+    <string name="error">Gagal memuat data.. Koneksi error.</string>
+    <string name="try_again">Coba lagi</string>
+    <string name="profil">Profil</string>
+    <string name="tutup">Tutup</string>
+    <string name="logout">Logout</string>
+    <string name="tambah_hewan">Tambah hewan</string>
+    <string name="nama">Nama</string>
+    <string name="nama_latin">Nama latin</string>
+    <string name="batal">Batal</string>
+    <string name="hapus">Hapus</string>
+    <string name="selesai">Selesai</string>
+    <string name="pengerjaan">Pengerjaan</string>
+    <string name="belum">Belum</string>
+    <string name="nama_matakuliah">Nama Matakuliah</string>
+    <string name="judul_tugas">Judul Tugas</string>
+    <string name="tambah_tugas">Tambah Tugas</string>
+    <string name="ubah_tugas">Ubah Tugas</string>
+    <string name="pencatatan_tugas">Pencatatan Tugas</string>
+    <string name="pelaporan_tugas">Pelaporan Tugas</string>
+    <string name="keterangan">Keterangan</string>
+
 </resources>

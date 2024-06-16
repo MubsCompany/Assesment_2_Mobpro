@@ -42,7 +42,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -71,11 +70,11 @@ fun DetailScreen(navController: NavHostController,id: Long?= null) {
     }
 
     val radioOptions = listOf(
-        stringResource(id = R.string.genre_fantasi),
-        stringResource(id = R.string.genre_filsafat),
-        stringResource(id = R.string.genre_horror),
-        stringResource(id = R.string.genre_komedi),
-        stringResource(id = R.string.genre_pelajaran)
+        stringResource(id = R.string.belum),
+        stringResource(id = R.string.pengerjaan),
+        stringResource(id = R.string.selesai),
+//        stringResource(id = R.string.genre_komedi),
+//        stringResource(id = R.string.genre_pelajaran)
     )
 
     var selectedGenre by rememberSaveable { mutableStateOf(radioOptions[0]) }
@@ -101,9 +100,9 @@ fun DetailScreen(navController: NavHostController,id: Long?= null) {
                 },
                 title = {
                     if (id == null)
-                        Text(text = stringResource(id = R.string.tambah_buku))
+                        Text(text = stringResource(id = R.string.tambah_tugas))
                     else
-                        Text(text = stringResource(id = R.string.edit_buku))
+                        Text(text = stringResource(id = R.string.ubah_tugas))
 
                 },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
@@ -175,7 +174,7 @@ fun DeleteAction(delete:()->Unit ){
             expanded = expanded ,
             onDismissRequest = { expanded = false}
         ) {
-            DropdownMenuItem(text = { Text(text = stringResource(R.string.hapus))},
+            DropdownMenuItem(text = { Text(text = stringResource(R.string.hapus_buku))},
                 onClick = {
                     expanded = false
                     delete()
@@ -206,7 +205,7 @@ fun FormBuku(
             value = title,
             onValueChange = {onTitleChange(it)},
             singleLine = true,
-            label = { Text(text = stringResource(id = R.string.judul))},
+            label = { Text(text = stringResource(id = R.string.nama_matakuliah))},
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.Words,
                 imeAction = ImeAction.Next
@@ -218,7 +217,7 @@ fun FormBuku(
             value = desc,
             onValueChange = {onDescChange(it)},
             singleLine = true,
-            label = { Text(text = stringResource(id = R.string.penulis))},
+            label = { Text(text = stringResource(id = R.string.judul_tugas))},
             keyboardOptions = KeyboardOptions(
                 imeAction = ImeAction.Done
             ),
