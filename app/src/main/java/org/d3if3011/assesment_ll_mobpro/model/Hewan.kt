@@ -4,6 +4,7 @@ data class Hewan(
     val id: Long,
     val namaPelajaran: String,
     val judulTugas: String,
+    val keterangan: String,
     val imageId: String,
-    val mine: Int
+//    val mine: Int
 )

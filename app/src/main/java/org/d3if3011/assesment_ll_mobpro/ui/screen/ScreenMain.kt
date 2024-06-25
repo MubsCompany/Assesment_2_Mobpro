@@ -29,6 +29,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -174,8 +175,14 @@ fun ScreenMain(modifier: Modifier = Modifier) {
         HewanDialog(
             bitmap = bitmap,
             onDismissRequest = { showHewanDialog = false },
-        ) { nama, namaLatin, keterangan ->
-            viewModel.saveData(user.email, nama, namaLatin, keterangan, bitmap!!)
+        ) { namaPelajaran, judulTugas, keterangan ->
+            viewModel.saveData(user.email, namaPelajaran, judulTugas, keterangan, bitmap!!)
+            if (user.email.isNotEmpty()) {
+                Toast.makeText(context, "Data berhasil ditambah!", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(context, "Anda belum login!", Toast.LENGTH_LONG).show()
+            }
+
             showHewanDialog = false
         }
     }
@@ -278,10 +285,8 @@ fun ListItem(hewan: Hewan, viewModel: MainViewModelBaru, userId: String){
                     color = Color.White
                 )
             }
-            IconButton(onClick = { showDialogDelete = true } ) {
-                if (hewan.mine == 1) {
                     IconButton(onClick = {
-                        showDialogDelete = true;
+                        showDialogDelete = true
                     }) {
                         Icon(imageVector = Icons.Default.Delete, contentDescription = null)
                         if (showDialogDelete) {
@@ -296,8 +301,8 @@ fun ListItem(hewan: Hewan, viewModel: MainViewModelBaru, userId: String){
                             }
                         }
                     }
-                }
-            }
+
+
         }
 
     }
@@ -346,6 +351,7 @@ fun NewListItem(hewan: Hewan, viewModel: MainViewModelBaru, userId: String) {
                 Spacer(modifier = Modifier.width(16.dp))
 
                 Column (
+                    modifier = Modifier.width(170.dp)
                 ) {
                     Text(
                         text = hewan.namaPelajaran,
@@ -360,19 +366,18 @@ fun NewListItem(hewan: Hewan, viewModel: MainViewModelBaru, userId: String) {
                         overflow = TextOverflow.Ellipsis
                     )
                     Text(
-                        text = hewan.imageId,
+                        text = hewan.keterangan,
                         style = MaterialTheme.typography.bodySmall,
                     )
                 }
             }
 
-            IconButton(
-                onClick = { showDialogDelete = true },
-            ) {
-                if (hewan.mine == 1) {
+
                     IconButton(onClick = {
-                        showDialogDelete = true;
-                    }) {
+                        showDialogDelete = true
+                    },
+//                        modifier = Modifier.weight(1f)
+                        ) {
                         Icon(imageVector = Icons.Default.Delete, contentDescription = null)
                         if (showDialogDelete) {
                             DeleteDialog(
@@ -386,8 +391,8 @@ fun NewListItem(hewan: Hewan, viewModel: MainViewModelBaru, userId: String) {
                             }
                         }
                     }
-                }
-            }
+
+
 
         }
     }

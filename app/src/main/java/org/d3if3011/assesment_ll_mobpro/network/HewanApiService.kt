@@ -28,19 +28,19 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface HewanApiService {
-    @GET("/api_mamang.php")
+    @GET("mamang.php")
     suspend fun getHewan(
         @Header("Authorization") userId: String
     ): List<Hewan>
 
     @Multipart
-    @POST("/api_mamang.php")
+    @POST("mamang.php")
     suspend fun postHewan(
         @Header("Authorization") userId:String,
         @Part("namaPelajaran") namaPelajaran: RequestBody,
         @Part("judulTugas") judulTugas: RequestBody,
         @Part("keterangan") keterangan: RequestBody,
-        @Part image: MultipartBody.Part
+        @Part imageId: MultipartBody.Part
     ): OpStatus
 
 //    @Multipart
@@ -52,7 +52,7 @@ interface HewanApiService {
 //        @Part image: MultipartBody.Part
 //    ): OpStatus
 
-    @DELETE("hewan.php")
+    @DELETE("mamang.php")
     suspend fun deleteHewan(
         @Header("Authorization") userId: String,
         @Query("id") id: Long

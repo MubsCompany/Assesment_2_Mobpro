@@ -38,10 +38,10 @@ fun HewanDialog(
     onDismissRequest: () -> Unit,
     onConfirmation: (String, String, String) -> Unit
 ) {
-    var nama by remember {
+    var namaPelajaran by remember {
         mutableStateOf("")
     }
-    var namaLatin by remember {
+    var judulTugas by remember {
         mutableStateOf("")
     }
     var keterangan by remember {
@@ -65,9 +65,9 @@ fun HewanDialog(
                         .aspectRatio(1f)
                 )
                 OutlinedTextField(
-                    value = nama,
-                    onValueChange = {nama = it},
-                    label = { Text(text = stringResource(id = R.string.nama)) },
+                    value = namaPelajaran,
+                    onValueChange = {namaPelajaran = it},
+                    label = { Text(text = stringResource(id = R.string.nama_matakuliah)) },
                     maxLines = 1,
                     keyboardOptions = KeyboardOptions(
                         capitalization = KeyboardCapitalization.Words,
@@ -76,9 +76,9 @@ fun HewanDialog(
                     modifier = Modifier.padding(top = 8.dp)
                 )
                 OutlinedTextField(
-                    value = namaLatin,
-                    onValueChange = {namaLatin = it},
-                    label = { Text(text = stringResource(id = R.string.nama_latin)) },
+                    value = judulTugas,
+                    onValueChange = {judulTugas = it},
+                    label = { Text(text = stringResource(id = R.string.judul_tugas)) },
                     maxLines = 1,
                     keyboardOptions = KeyboardOptions(
                         capitalization = KeyboardCapitalization.Sentences,
@@ -110,8 +110,8 @@ fun HewanDialog(
                         Text(text = stringResource(id = R.string.batal))
                     }
                     OutlinedButton(
-                        onClick = { onConfirmation(nama, namaLatin, keterangan) },
-                        enabled = nama.isNotEmpty() && namaLatin.isNotEmpty() && keterangan.isNotEmpty(),
+                        onClick = { onConfirmation(namaPelajaran, judulTugas, keterangan) },
+                        enabled = namaPelajaran.isNotEmpty() && judulTugas.isNotEmpty() && keterangan.isNotEmpty(),
                         modifier = Modifier.padding(8.dp)
                     ) {
                         Text(text = stringResource(id = R.string.simpan))
