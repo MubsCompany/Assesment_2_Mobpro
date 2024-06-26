@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Assesment_ll_Mobpro</string>
+    <string name="list_kosong">Belum ada data</string>
+    <string name="x_diklik">%1$s diklik!</string>
+    <string name="tambah_buku">Tambah Buku</string>
+    <string name="tambah_error">Belum bisa tambah buku</string>
+    <string name="judul">Judul buku</string>
+    <string name="penulis">Penulis buku</string>
+    <string name="genre">Genre buku</string>
+    <string name="genre_horror">Horror</string>
+    <string name="genre_komedi">Komedi</string>
+    <string name="genre_filsafat">Filsafat</string>
+    <string name="genre_pelajaran">Pelajaran</string>
+    <string name="genre_fantasi">Fantasi</string>
+    <string name="kembali">Kembali</string>
+    <string name="simpan">Simpan</string>
+    <string name="edit_buku">Ubah buku</string>
+    <string name="invalid">data tidak boleh kosong</string>
+    <string name="hapus">Hapus buku</string>
+    <string name="opsi_lainnya">Opsi lainnya</string>
+    <string name="list">Tampilan List</string>
+    <string name="grid">Tampilan Grid</string>
+    <string name="bagikan_template">Judul buku : %1$s  Penulis buku : %2$s  Genre buku : %3$s</string>
+    <string name="pesan_hapus">Hapus buku ini?</string>
+    <string name="tombol_hapus">Hapus</string>
+    <string name="tombol_batal">Batal</string>
+    <string name="username">Username</string>
+    <string name="password">Kata sandi</string>
+    <string name="login">Login</string>
+    <string name="kalimat_checkbox">Checkbox %1$s</string>
+    <string name="checked">Terceklis</string>
+    <string name="unchecked">Tida terceklis</string>
+    <string name="login_berhasil">Login berhasil</string>
+    <string name="username_wrong">username salah</string>
+    <string name="password_wrong">password salah</string>
+</resources>
