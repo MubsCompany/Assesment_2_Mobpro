@@ -10,15 +10,19 @@ import androidx.navigation.navArgument
 import org.d3if3011.assesment_ll_mobpro.ui.screen.MainScreen
 import org.d3if3011.assesment_ll_mobpro.ui.screen.DetailScreen
 import org.d3if3011.assesment_ll_mobpro.ui.screen.KEY_ID_BUKU
+import org.d3if3011.assesment_ll_mobpro.ui.screen.LoginScreen
 
 @Composable
 fun SetupNavGraph(navController: NavHostController = rememberNavController()) {
     NavHost(
         navController = navController,
-        startDestination = Screen.Home.route
+        startDestination = Screen.Login.route
     ) {
         composable(route = Screen.Home.route){
             MainScreen(navController)
+        }
+        composable(route = Screen.Login.route){
+            LoginScreen(navController)
         }
         composable(route = Screen.FormBaru.route){
             DetailScreen(navController)

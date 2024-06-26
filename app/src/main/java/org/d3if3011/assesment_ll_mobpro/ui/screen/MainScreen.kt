@@ -1,5 +1,7 @@
 package org.d3if3011.assesment_ll_mobpro.ui.screen
 
+import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -7,8 +9,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -18,6 +22,7 @@ import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
@@ -145,8 +150,7 @@ fun ScreenContent(showList: Boolean, modifier: Modifier,navController: NavHostCo
 
         if (showList) {
             LazyColumn(
-                modifier = modifier
-                    .fillMaxSize(),
+                modifier = modifier.height(640.dp),
                 contentPadding = PaddingValues(bottom = 84.dp)
             ) {
                 items(data) {
@@ -177,33 +181,51 @@ fun ScreenContent(showList: Boolean, modifier: Modifier,navController: NavHostCo
 
 @Composable
 fun ListItem(buku: Buku, onClick: () -> Unit ){
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { onClick() }
-            .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
+    val context = LocalContext.current
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(
-            text = buku.judulBuku,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-            fontWeight = FontWeight.Bold
-        )
-        Text(
-            text = buku.penulisBuku,
-            maxLines = 2,
-            overflow = TextOverflow.Ellipsis,
-        )
-        Text(
-            text = buku.genreBuku,
-        )
-
+        Column(
+            modifier = Modifier
+                .weight(150f)
+                .clickable { onClick() }
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Text(
+                text = buku.judulBuku,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                fontWeight = FontWeight.Bold
+            )
+            Text(
+                text = buku.penulisBuku,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
+            )
+            Text(
+                text = buku.genreBuku,
+            )
+        }
+        IconButton(onClick = {
+            shareData(
+                context = context,
+                message = context.getString(R.string.bagikan_template,
+                    buku.judulBuku, buku.penulisBuku, buku.genreBuku
+                )
+            )
+        }) {
+            Icon(imageVector = Icons.Default.Share, contentDescription = null)
+        }
     }
 }
 
 @Composable
 fun GridItem(buku: Buku, onClick: () -> Unit) {
+    val context = LocalContext.current
+
     Card (
         modifier = Modifier
             .fillMaxWidth()
@@ -213,25 +235,52 @@ fun GridItem(buku: Buku, onClick: () -> Unit) {
         ),
         border = BorderStroke(1.dp, Color.Gray)
     ) {
-        Column (
-            modifier = Modifier.padding(8.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(
-                text = buku.judulBuku,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis,
-                fontWeight = FontWeight.Bold
-            )
-            Text(
-                text = buku.penulisBuku,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-            Text(text = buku.genreBuku)
+            Column (
+                modifier = Modifier.padding(8.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                Text(
+                    text = buku.judulBuku,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = buku.penulisBuku,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Text(text = buku.genreBuku)
+            }
+            IconButton(onClick = {
+                shareData(
+                    context = context,
+                    message = context.getString(R.string.bagikan_template,
+                        buku.judulBuku, buku.penulisBuku, buku.genreBuku
+                    )
+                )
+            }) {
+                Icon(imageVector = Icons.Default.Share, contentDescription = null)
+            }
         }
     }
 }
+
+private fun shareData(context: Context, message: String){
+    val shareIntent = Intent(Intent.ACTION_SEND).apply {
+        type = "text/plain"
+        putExtra(Intent.EXTRA_TEXT, message)
+    }
+    if (shareIntent.resolveActivity(context.packageManager) != null){
+        context.startActivity(shareIntent)
+    }
+}
+
 
 @Preview(showBackground = true)
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)

@@ -18,10 +18,19 @@
     <string name="invalid">data tidak boleh kosong</string>
     <string name="hapus">Hapus Buku</string>
     <string name="opsi_lainnya">Opsi Lainnya</string>
-
+    <string name="list">List view</string>
+    <string name="grid">Grid view</string>
+    <string name="bagikan_template">Book Title : %1$s\ \nBook Author : %2$s\ \nBook Genre : %3$s</string>
     <string name="pesan_hapus">Hapus buku ini?</string>
     <string name="tombol_hapus">Hapus</string>
     <string name="tombol_batal">Batal</string>
-    <string name="list">Tampilan list</string>
-    <string name="grid">Tampilan grid</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="kalimat_checkbox">Checkbox %1$s</string>
+    <string name="checked">Checked</string>
+    <string name="unchecked">Not checked</string>
+    <string name="login_berhasil">Login successful</string>
+    <string name="username_wrong">Wrong username</string>
+    <string name="password_wrong">Wrong password</string>
 </resources>
